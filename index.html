@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rock Card — Built For A Bigger Tomorrow | Crypto Visa Card</title>
+  <meta name="description" content="Your crypto in real life. Spend digital assets globally with Obsidian & Stone physical & virtual Visa cards. Non-custodial, borderless, zero FX markup." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#080808',
+            charcoal: '#121212',
+            cardbg: '#181818',
+            stoneGray: '#a7a7a7',
+            lightStone: '#f5f5f5',
+          },
+          boxShadow: {
+            'glow-stone': '0 0 50px -10px rgba(167, 167, 167, 0.15)',
+            'card-obsidian': '0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.12)',
+            'card-stone': '0 25px 60px -15px rgba(167, 167, 167, 0.25), 0 0 1px 1px rgba(255, 255, 255, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Card geometric sheen */
+    .card-sheen {
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 65%);
+    }
+    .hero-radial-glow {
+      background: radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.07) 0%, rgba(8, 8, 8, 0) 70%);
+    }
+    .perspective-container {
+      perspective: 1000px;
+    }
+    .tilt-card {
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    /* Subtle metallic brushed texture effect for Stone card */
+    .stone-metal-bg {
+      background: linear-gradient(135deg, #d4d4d4 0%, #a7a7a7 45%, #8e8e8e 100%);
+    }
+    /* Smooth accordion transition */
+    .faq-answer {
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-stone-200 font-sans selection:bg-white selection:text-black antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
+
+  <!-- NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-obsidian/85 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <svg class="w-8 h-8 transition-transform group-hover:scale-105 duration-200" viewBox="0 0 100 100" fill="none">
+          <polygon points="12,82 48,22 48,82" fill="#f5f5f5" />
+          <polygon points="54,82 90,32 64,82" fill="#a7a7a7" />
+        </svg>
+        <div class="flex flex-col">
+          <span class="tracking-[0.25em] text-sm sm:text-base font-extrabold text-white uppercase leading-none">ROCK CARD</span>
+          <span class="text-[9px] tracking-widest text-stone-500 uppercase mt-1">Built For Tomorrow</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-400">
+        <a href="#features" class="hover:text-white transition-colors duration-150">Features</a>
+        <a href="#cards" class="hover:text-white transition-colors duration-150">Tiers & Finishes</a>
+        <a href="#security" class="hover:text-white transition-colors duration-150">Security</a>
+        <a href="#faq" class="hover:text-white transition-colors duration-150">FAQ</a>
+      </nav>
+
+      <!-- Action Button & Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a href="#waitlist-section" class="px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-white text-black hover:bg-stone-200 transition-all shadow-md active:scale-95">
+          Join Waitlist
+        </a>
+        <button id="mobile-menu-btn" type="button" aria-label="Toggle menu" class="md:hidden p-2 rounded-lg text-stone-400 hover:text-white hover:bg-white/5 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-charcoal/95 px-6 py-4 flex flex-col gap-4 text-sm font-medium">
+      <a href="#features" class="mobile-nav-link text-stone-400 hover:text-white py-1">Features</a>
+      <a href="#cards" class="mobile-nav-link text-stone-400 hover:text-white py-1">Tiers & Finishes</a>
+      <a href="#security" class="mobile-nav-link text-stone-400 hover:text-white py-1">Security</a>
+      <a href="#faq" class="mobile-nav-link text-stone-400 hover:text-white py-1">FAQ</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main class="flex-grow">
+    <section class="relative pt-36 pb-20 md:pt-48 md:pb-32 hero-radial-glow border-b border-white/5">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        
+        <!-- Live Tagline Chip -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-stone-300 text-xs tracking-widest uppercase mb-8 shadow-inner">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-stone-300 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+          </span>
+          Crypto · Global · Borderless
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] mb-6">
+          BUILT FOR A <br class="hidden sm:block"/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-stone-300 to-stone-600">BIGGER TOMORROW</span>
+        </h1>
+
+        <p class="text-stone-400 text-base sm:text-xl max-w-2xl mx-auto font-normal leading-relaxed mb-10">
+          Your crypto in real life. Spend digital balances everywhere Visa is accepted worldwide with zero foreign exchange fees and real-time liquidity.
+        </p>
+
+        <!-- Waitlist Input Form -->
+        <div id="waitlist-section" class="max-w-md mx-auto mb-16 scroll-mt-32">
+          <form id="hero-waitlist-form" class="flex flex-col sm:flex-row gap-2.5 p-1 rounded-3xl sm:rounded-full bg-charcoal border border-white/15 focus-within:border-white/50 transition">
+            <input 
+              id="hero-email-input"
+              type="email" 
+              placeholder="Enter your email address" 
+              required 
+              class="flex-1 bg-transparent px-5 py-3.5 text-sm text-white placeholder:text-stone-600 focus:outline-none rounded-full"
+            />
+            <button 
+              type="submit" 
+              class="px-7 py-3.5 bg-white text-black font-semibold text-xs tracking-wider uppercase rounded-full hover:bg-stone-200 active:scale-95 transition-all shadow-md whitespace-nowrap">
+              Get Early Access
+            </button>
+          </form>
+          <p class="text-[11px] text-stone-500 mt-2.5">Join 14,000+ cardholders waiting for the Q4 release.</p>
+        </div>
+
+        <!-- 3D Perspective Card Showcase -->
+        <div class="perspective-container flex justify-center items-center py-4">
+          <div 
+            id="hero-card"
+            class="tilt-card cursor-pointer w-80 sm:w-[410px] h-52 sm:h-[250px] rounded-2xl bg-gradient-to-tr from-[#050505] via-[#121212] to-[#202020] border border-white/20 p-7 shadow-card-obsidian flex flex-col justify-between relative overflow-hidden select-none"
+            title="Move your mouse over the card">
+            
+            <!-- Top Bar: Logo & EMV Chip -->
+            <div class="flex justify-between items-center z-10">
+              <span class="text-xs uppercase tracking-[0.2em] font-bold text-stone-200">ROCK CARD</span>
+              <!-- EMV Chip graphic -->
+              <div class="w-11 h-8 rounded-md bg-gradient-to-br from-stone-200 via-stone-400 to-stone-500 border border-stone-400/80 flex items-center justify-center p-0.5 shadow-sm">
+                <div class="w-full h-full border border-stone-600/50 rounded-sm grid grid-cols-3 gap-0.5">
+                  <div class="border-r border-b border-stone-600/40"></div>
+                  <div class="border-r border-b border-stone-600/40"></div>
+                  <div class="border-b border-stone-600/40"></div>
+                  <div class="border-r border-stone-600/40"></div>
+                  <div class="border-r border-stone-600/40"></div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Geometric Rock Card Accent Silhouette -->
+            <div class="absolute -right-6 top-8 opacity-20 pointer-events-none">
+              <svg class="w-48 h-48" viewBox="0 0 100 100" fill="currentColor">
+                <polygon points="10,85 50,20 50,85" fill="#ffffff" />
+                <polygon points="56,85 92,30 65,85" fill="#a7a7a7" />
+              </svg>
+            </div>
+
+            <!-- Bottom Bar: Cardholder info & Visa -->
+            <div class="flex justify-between items-end z-10">
+              <div>
+                <p class="text-[9px] tracking-widest text-stone-500 uppercase font-mono">EDITION 001</p>
+                <p class="text-sm font-semibold tracking-widest text-stone-100 uppercase">EARLY MEMBER</p>
+              </div>
+              <div class="text-2xl font-black italic tracking-wider text-white">VISA</div>
+            </div>
+
+            <!-- Dynamic Sheen Overlay -->
+            <div class="absolute inset-0 card-sheen pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METRICS -->
+    <section class="py-14 border-b border-white/5 bg-charcoal/40">
+      <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="p-2">
+          <div class="text-3xl sm:text-4xl font-extrabold text-white">80M+</div>
+          <p class="text-xs tracking-wider text-stone-400 uppercase mt-2 font-medium">Visa Checkouts Globally</p>
+        </div>
+        <div class="p-2">
+          <div class="text-3xl sm:text-4xl font-extrabold text-white">200+</div>
+          <p class="text-xs tracking-wider text-stone-400 uppercase mt-2 font-medium">Countries & Territories</p>
+        </div>
+        <div class="p-2">
+          <div class="text-3xl sm:text-4xl font-extrabold text-white">0%</div>
+          <p class="text-xs tracking-wider text-stone-400 uppercase mt-2 font-medium">Foreign Exchange Fee</p>
+        </div>
+        <div class="p-2">
+          <div class="text-3xl sm:text-4xl font-extrabold text-white">Instant</div>
+          <p class="text-xs tracking-wider text-stone-400 uppercase mt-2 font-medium">Virtual Card Issuance</p>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- FEATURES -->
+    <section id="features" class="py-24 bg-charcoal/30 border-y border-white/5 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-xs font-semibold tracking-widest text-stone-400 uppercase mb-3">Money Moves Further</h2>
+          <p class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Financial Utility Without Borders</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-2xl bg-cardbg border border-white/5 hover:border-white/20 transition">
+            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xl mb-6">
+              ⚡️
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2">Tap to Pay Anywhere</h4>
+            <p class="text-sm text-stone-400 leading-relaxed">
+              Compatible with Apple Pay and Google Wallet on day one. Cash out local currencies at worldwide ATMs without manual exchange delays.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-2xl bg-cardbg border border-white/5 hover:border-white/20 transition">
+            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xl mb-6">
+              🛡️
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2">Self-Custodial Control</h4>
+            <p class="text-sm text-stone-400 leading-relaxed">
+              Fund on your own terms. Connect your hardware wallet or preferred Web3 provider to fund card balances only when you decide to spend.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-2xl bg-cardbg border border-white/5 hover:border-white/20 transition">
+            <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xl mb-6">
+              🌐
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2">Global Visa Clearing</h4>
+            <p class="text-sm text-stone-400 leading-relaxed">
+              Benefit from tier-1 institutional spreads and zero predatory weekend foreign transaction markups whether traveling or shopping online.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY SECTION -->
+    <section id="security" class="py-24 max-w-6xl mx-auto px-6 scroll-mt-20">
+      <div class="rounded-3xl border border-white/10 bg-gradient-to-b from-[#121212] to-obsidian p-8 sm:p-12">
+        <div class="max-w-2xl">
+          <span class="text-xs font-semibold uppercase tracking-widest text-stone-400">Institutional Grade</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">Enterprise Card Architecture</h2>
+          <p class="text-stone-400 text-sm leading-relaxed mb-6">
+            Rock Card uses audited smart contract escrow channels alongside PCI-DSS Level 1 compliant issuance partners. Your private keys never leave your custody, and your identity remains protected with biometric authorizations.
+          </p>
+          <div class="flex flex-wrap gap-4 text-xs font-mono text-stone-300">
+            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">✓ 256-bit AES Encryption</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">✓ PCI-DSS Level 1</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">✓ Visa 3-D Secure 2.0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section id="faq" class="py-24 max-w-4xl mx-auto px-6 scroll-mt-20">
+      <h2 class="text-3xl font-bold text-white text-center mb-4">Frequently Asked Questions</h2>
+      <p class="text-center text-stone-400 text-sm mb-12">Everything you need to know about the Rock Card ecosystem.</p>
+
+      <div class="space-y-4" id="faq-container">
+        
+        <div class="rounded-2xl bg-cardbg border border-white/5 overflow-hidden">
+          <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium hover:text-stone-300 transition">
+            <span>What is Rock Card?</span>
+            <span class="faq-icon text-stone-400 transition-transform duration-200">↓</span>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+            <p class="text-stone-400 text-sm pb-5 leading-relaxed">
+              Rock Card is a crypto-backed Visa payment card that bridges decentralized digital assets with traditional merchants. It enables you to spend your on-chain balance anywhere Visa is accepted worldwide with instant real-time settlement.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-cardbg border border-white/5 overflow-hidden">
+          <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium hover:text-stone-300 transition">
+            <span>Which cryptocurrencies and networks are supported?</span>
+            <span class="faq-icon text-stone-400 transition-transform duration-200">↓</span>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+            <p class="text-stone-400 text-sm pb-5 leading-relaxed">
+              At launch, we support USDT, USDC, BTC, and ETH across Ethereum, Arbitrum, Optimism, Solana, and Base networks, with more Layer-1 and Layer-2 assets being added continuously.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-cardbg border border-white/5 overflow-hidden">
+          <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium hover:text-stone-300 transition">
+            <span>When do physical cards start shipping?</span>
+            <span class="faq-icon text-stone-400 transition-transform duration-200">↓</span>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+            <p class="text-stone-400 text-sm pb-5 leading-relaxed">
+              Virtual cards will be issued instantly to approved waitlist members in batches. Physical Obsidian and Stone metal cards will begin dispatching to supported regions right after the virtual rollout.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-cardbg border border-white/5 overflow-hidden">
+          <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium hover:text-stone-300 transition">
+            <span>Are there any foreign exchange (FX) or hidden transaction fees?</span>
+            <span class="faq-icon text-stone-400 transition-transform duration-200">↓</span>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+            <p class="text-stone-400 text-sm pb-5 leading-relaxed">
+              No. Rock Card offers 0% foreign transaction fees and transparent spot rates at the exact millisecond of purchase, eliminating high traditional banking exchange margins.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-white/10 text-xs text-stone-500 bg-obsidian">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <svg class="w-5 h-5 text-stone-400" viewBox="0 0 100 100" fill="currentColor">
+          <polygon points="12,82 48,22 48,82" fill="#f5f5f5" />
+          <polygon points="54,82 90,32 64,82" fill="#a7a7a7" />
+        </svg>
+        <span class="tracking-[0.2em] uppercase font-bold text-stone-300">ROCK CARD</span>
+        <span>© 2026 Rock Card Inc. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6">
+        <a href="#cards" class="hover:text-stone-300 transition">Card Tiers</a>
+        <a href="#faq" class="hover:text-stone-300 transition">Help & Support</a>
+        <a href="#" class="hover:text-stone-300 transition">Privacy Policy</a>
+        <a href="#" class="hover:text-stone-300 transition">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WAITLIST SUCCESS MODAL -->
+  <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="bg-charcoal border border-white/15 rounded-3xl max-w-sm w-full p-8 text-center shadow-2xl transform scale-95 transition-transform duration-200">
+      <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-400 text-xl font-bold">
+        ✓
+      </div>
+      <h3 class="text-xl font-bold text-white mb-2">You're On The List</h3>
+      <p id="modal-desc" class="text-stone-400 text-xs leading-relaxed mb-6">
+        We've reserved your early invite. Keep an eye on your inbox for roll-out announcements and activation credentials.
+      </p>
+      <button id="modal-close-btn" class="w-full py-3 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-stone-200 transition">
+        Got It
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // 1. Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // 2. 3D Card Hover & Tilt Effect
+    const heroCard = document.getElementById('hero-card');
+    if (heroCard && window.matchMedia('(hover: hover)').matches) {
+      heroCard.addEventListener('mousemove', (e) => {
+        const rect = heroCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -12;
+        const rotateY = ((x - centerX) / centerX) * 12;
+
+        heroCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      });
+
+      heroCard.addEventListener('mouseleave', () => {
+        heroCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+      });
+    }
+
+    // 3. Interactive Accordion (FAQ)
+    const faqButtons = document.querySelectorAll('.faq-btn');
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('.faq-icon');
+        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+        // Close all others
+        document.querySelectorAll('.faq-content').forEach(c => c.style.maxHeight = null);
+        document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // 4. Modal and Form Submission
+    const waitlistForm = document.getElementById('hero-waitlist-form');
+    const emailInput = document.getElementById('hero-email-input');
+    const modal = document.getElementById('success-modal');
+    const modalClose = document.getElementById('modal-close-btn');
+    const modalDesc = document.getElementById('modal-desc');
+
+    function showModal(email, tier = '') {
+      let message = `We've saved ${email} on the waitlist`;
+      if (tier) message += ` for the ${tier} edition`;
+      message += `. You'll receive activation access as soon as our next batch drops.`;
+      
+      modalDesc.textContent = message;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.querySelector('div').classList.remove('scale-95');
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.querySelector('div').classList.add('scale-95');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    waitlistForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (email) {
+        showModal(email);
+        emailInput.value = '';
+      }
+    });
+
+    // Function called by "Reserve Obsidian" / "Reserve Stone" buttons
+    window.prefillTier = function(tierName) {
+      const waitlistSection = document.getElementById('waitlist-section');
+      waitlistSection.scrollIntoView({ behavior: 'smooth' });
+      emailInput.focus();
+      emailInput.placeholder = `Enter email for ${tierName} card`;
+    };
+  </script>
+</body>
+</html>
